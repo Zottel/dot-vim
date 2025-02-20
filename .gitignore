@@ -1,0 +1,16 @@
+# Ignore everything by default.
+*
+# We explicitly list all paths and files we do not ignore below.
+!.gitignore
+
+# Basic configs:
+!vimrc
+!gvimrc
+
+!autoload
+!autoload/pathogen.vim
+
+!plugin
+!plugin/zoom.vim
+
+
