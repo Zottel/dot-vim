@@ -262,9 +262,6 @@
 
 
 " File Syntax {{{1
-	" Quartz {{{2
-	autocmd BufReadPost *.qrz set syntax=qrz
-
 	" F# {{{2
 	" source files are recognised as forth otherwise
 	" autocmd BufNewFile,BufRead *.fs set syntax=fsharp
@@ -276,15 +273,17 @@
 	autocmd BufNewFile,BufReadPost *.md setlocal filetype=markdown
 	autocmd BufNewFile,BufReadPost *.md setlocal foldmethod=expr
 
-
 	" PHP {{{2
 	autocmd BufNewFile,BufReadPost *.php setlocal foldmethod=marker
 	autocmd BufNewFile,BufReadPost *.php setlocal foldmarker={,}
 
 
-
 " File templates {{{1
 	" RestructuredText {{{2
-	autocmd BufReadPost *.rst set syntax=qrz
-	autocmd BufNewFile  *.rst 0r ~/.vim/templates/restructuredtext.rst
+	"autocmd BufNewFile  *.rst 0r ~/.vim/templates/restructuredtext.rst
+	autocmd BufNewFile *.rst call RSTTemplate()
+	function RSTTemplate()
+			0r ~/.vim/templates/restructuredtext.rst
+			:%s/insert_current_time_here/\=strftime("%Y-%m-%d %H:%M")/g
+	endfunction
 
